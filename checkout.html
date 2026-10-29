@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout — ORBITE</title>
+    <meta name="description" content="Selesaikan pesananmu di ORBITE. Checkout simulasi untuk tugas sekolah.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/products.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <nav class="site-nav" aria-label="Navigasi utama">
+        <div class="container nav-inner">
+
+            <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                <span class="brand-word">ORBITE</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" data-nav="home">Beranda</a>
+                <a href="products.html" data-nav="products">Produk</a>
+                <a href="tentang.html" data-nav="tentang">Tentang</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search-open aria-label="Cari produk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6.5" />
+                        <path d="M16 16 21 21" />
+                    </svg>
+                </button>
+
+                <a class="icon-btn" href="cart.html" aria-label="Keranjang belanja">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        aria-hidden="true">
+                        <path d="M6 8h12l1 13H5L6 8z" />
+                        <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round" />
+                    </svg>
+                    <span class="cart-count" data-cart-count>0</span>
+                </a>
+
+                <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" data-nav="home">Beranda <span>ORBITE</span></a>
+        <a href="products.html" data-nav="products">Semua produk <span>18 produk</span></a>
+        <a href="tentang.html" data-nav="tentang">Tentang <span>Proyek sekolah</span></a>
+        <p class="mobile-note">Pilih kategori lewat filter di halaman Produk. Gratis pengiriman untuk pesanan di atas Rp 1.000.000.</p>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Cari produk">
+        <button class="search-close" type="button" aria-label="Tutup pencarian">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+        </button>
+        <div class="search-panel">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="M16 16 21 21" />
+                </svg>
+                <label class="sr-only" for="searchInput">Cari produk</label>
+                <input id="searchInput" type="search" placeholder="Cari produk Apple..." autocomplete="off">
+            </div>
+            <p class="search-hint">Tekan Enter untuk melihat semua hasil, Esc untuk menutup.</p>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main id="main" class="container checkout-page">
+
+        <a class="checkout-back" href="cart.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+            </svg>
+            Kembali ke keranjang
+        </a>
+
+        <div class="page-title">
+            <h1>Checkout</h1>
+        </div>
+
+        <div class="checkout-layout" id="checkoutLayout" hidden>
+
+            <form class="checkout-form" id="checkoutForm" novalidate>
+
+                <section class="checkout-card">
+                    <h2>Informasi kontak</h2>
+                    <div class="field-grid">
+                        <div class="field field--full">
+                            <label for="name">Nama lengkap</label>
+                            <input id="name" name="name" type="text" autocomplete="name"
+                                placeholder="Nama sesuai identitas">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" autocomplete="email"
+                                placeholder="nama@email.com">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Nomor telepon</label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel"
+                                placeholder="0812 3456 7890">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="checkout-card">
+                    <h2>Alamat pengiriman</h2>
+                    <div class="field-grid">
+                        <div class="field field--full">
+                            <label for="address">Alamat lengkap</label>
+                            <input id="address" name="address" type="text" autocomplete="street-address"
+                                placeholder="Jalan, nomor rumah, RT/RW">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="city">Kota</label>
+                            <input id="city" name="city" type="text" autocomplete="address-level2"
+                                placeholder="Nama kota atau kabupaten">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="province">Provinsi</label>
+                            <select id="province" name="province" autocomplete="address-level1">
+                                <option value="">Pilih provinsi</option>
+                                <option value="DKI Jakarta">DKI Jakarta</option>
+                                <option value="Jawa Barat">Jawa Barat</option>
+                                <option value="Jawa Tengah">Jawa Tengah</option>
+                                <option value="Jawa Timur">Jawa Timur</option>
+                                <option value="Banten">Banten</option>
+                                <option value="Bali">Bali</option>
+                                <option value="Sumatera Utara">Sumatera Utara</option>
+                                <option value="Sumatera Selatan">Sumatera Selatan</option>
+                                <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                            </select>
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="postal">Kode pos</label>
+                            <input id="postal" name="postal" type="text" inputmode="numeric" maxlength="5"
+                                autocomplete="postal-code" placeholder="12345">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="checkout-card">
+                    <h2>Metode pengiriman</h2>
+                    <div class="radio-list">
+                        <label class="radio-card">
+                            <input type="radio" name="shipping" value="reguler" checked>
+                            <span>
+                                <strong>Reguler</strong>
+                                <span>2–4 hari kerja</span>
+                            </span>
+                            <span class="radio-price">Gratis</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="shipping" value="express">
+                            <span>
+                                <strong>Express</strong>
+                                <span>1–2 hari kerja</span>
+                            </span>
+                            <span class="radio-price">Rp 50.000</span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="checkout-card">
+                    <h2>Metode pembayaran</h2>
+                    <div class="radio-list">
+                        <label class="radio-card">
+                            <input type="radio" name="payment" value="transfer" checked>
+                            <span>
+                                <strong>Transfer Bank</strong>
+                                <span>BCA, Mandiri, BNI, BRI</span>
+                            </span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="payment" value="card">
+                            <span>
+                                <strong>Kartu Kredit</strong>
+                                <span>Visa, Mastercard</span>
+                            </span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="payment" value="cod">
+                            <span>
+                                <strong>Bayar di Tempat</strong>
+                                <span>COD tersedia di kota besar</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="field-grid" id="cardFields" hidden style="margin-top: 14px;">
+                        <div class="field field--full">
+                            <label for="cardNumber">Nomor kartu</label>
+                            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric"
+                                maxlength="19" placeholder="1234 5678 9012 3456" autocomplete="cc-number">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="cardExpiry">Masa berlaku</label>
+                            <input id="cardExpiry" name="cardExpiry" type="text" inputmode="numeric" maxlength="5"
+                                placeholder="MM/YY" autocomplete="cc-exp">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="cardCvv">CVV</label>
+                            <input id="cardCvv" name="cardCvv" type="text" inputmode="numeric" maxlength="3"
+                                placeholder="123" autocomplete="cc-csc">
+                            <p class="field-error" role="alert"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="sim-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 11v5" />
+                        <path d="M12 8h.01" />
+                    </svg>
+                    <span>Ini halaman simulasi untuk tugas sekolah. Tidak ada pembayaran atau pengiriman sungguhan yang
+                        diproses.</span>
+                </div>
+
+            </form>
+
+            <aside class="checkout-summary" aria-label="Ringkasan pesanan">
+                <h2>Pesananmu</h2>
+
+                <div id="summaryItems"></div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <strong id="checkoutSubtotal"></strong>
+                </div>
+                <div class="summary-row">
+                    <span>Pengiriman</span>
+                    <strong id="checkoutShipping"></strong>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span class="amount" id="checkoutTotal"></span>
+                </div>
+
+                <button class="btn btn--primary btn--block btn--lg" type="submit" form="checkoutForm"
+                    id="placeOrder">Buat pesanan</button>
+
+                <p class="summary-note">Dengan membuat pesanan, kamu menyetujui syarat dan ketentuan ORBITE.</p>
+            </aside>
+
+        </div>
+
+        <div class="empty-state" id="checkoutEmpty" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+                aria-hidden="true">
+                <path d="M6 8h12l1 13H5L6 8z" />
+                <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round" />
+            </svg>
+            <h2>Belum ada pesanan</h2>
+            <p>Keranjangmu kosong. Tambahkan produk dulu sebelum checkout.</p>
+            <a class="btn btn--dark" href="products.html">Lihat produk</a>
+        </div>
+
+        <div class="success-card" id="checkoutSuccess" hidden>
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                </svg>
+            </div>
+            <h1>Pesanan diterima</h1>
+            <p id="successMessage"></p>
+            <p class="order-number" id="successOrderNumber"></p>
+
+            <div class="success-details">
+                <div class="summary-row">
+                    <span>Pengiriman</span>
+                    <strong id="successShipping"></strong>
+                </div>
+                <div class="summary-row">
+                    <span>Pembayaran</span>
+                    <strong id="successPayment"></strong>
+                </div>
+                <div class="summary-total">
+                    <span>Total dibayar</span>
+                    <span class="amount" id="successTotal"></span>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <a class="btn btn--dark" href="index.html">Kembali ke beranda</a>
+                <a class="btn btn--outline" href="products.html">Lihat produk lain</a>
+            </div>
+        </div>
+
+        <noscript>
+            <p>Aktifkan JavaScript untuk menyelesaikan pesanan.</p>
+        </noscript>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-wordmark" aria-hidden="true">ORBITE</div>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                        <span class="brand-word">ORBITE</span>
+                    </a>
+                    <p>Toko konsep untuk produk Apple pilihan. Dibuat sebagai proyek tugas sekolah, dikerjakan dengan serius.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Belanja</h3>
+                    <a href="products.html?category=iphone">iPhone</a>
+                    <a href="products.html?category=mac">Mac</a>
+                    <a href="products.html?category=ipad">iPad</a>
+                    <a href="products.html?category=watch">Watch</a>
+                    <a href="products.html?category=audio">Audio</a>
+                    <a href="products.html?category=aksesori">Aksesori</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Bantuan</h3>
+                    <a href="index.html#layanan">Pengiriman</a>
+                    <a href="index.html#layanan">Garansi</a>
+                    <a href="index.html#layanan">Cicilan</a>
+                    <a href="mailto:halo@orbite.example">Hubungi kami</a>
+                    <a href="tentang.html">Tentang ORBITE</a>
+                    <a href="tentang.html#sumber">Sumber aset</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Ikuti</h3>
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span data-year>2026</span> ORBITE. Proyek tugas sekolah. Tidak berafiliasi dengan Apple Inc. Apple, iPhone, iPad, Mac, dan Watch adalah merek dagang Apple Inc.</p>
+                <p>Dibuat dengan HTML, CSS, dan JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

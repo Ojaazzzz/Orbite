@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tentang — ORBITE</title>
+    <meta name="description"
+        content="ORBITE adalah proyek tugas sekolah berupa toko konsep produk Apple. Bukan toko resmi, tanpa transaksi nyata, dan tidak berafiliasi dengan Apple Inc.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/products.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <nav class="site-nav" aria-label="Navigasi utama">
+        <div class="container nav-inner">
+
+            <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                <span class="brand-word">ORBITE</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" data-nav="home">Beranda</a>
+                <a href="products.html" data-nav="products">Produk</a>
+                <a href="tentang.html" data-nav="tentang">Tentang</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search-open aria-label="Cari produk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6.5" />
+                        <path d="M16 16 21 21" />
+                    </svg>
+                </button>
+
+                <a class="icon-btn" href="cart.html" aria-label="Keranjang belanja">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        aria-hidden="true">
+                        <path d="M6 8h12l1 13H5L6 8z" />
+                        <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round" />
+                    </svg>
+                    <span class="cart-count" data-cart-count>0</span>
+                </a>
+
+                <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" data-nav="home">Beranda <span>ORBITE</span></a>
+        <a href="products.html" data-nav="products">Semua produk <span>18 produk</span></a>
+        <a href="tentang.html" data-nav="tentang">Tentang <span>Proyek sekolah</span></a>
+        <p class="mobile-note">Pilih kategori lewat filter di halaman Produk. Gratis pengiriman untuk pesanan di atas Rp 1.000.000.</p>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Cari produk">
+        <button class="search-close" type="button" aria-label="Tutup pencarian">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+        </button>
+        <div class="search-panel">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="M16 16 21 21" />
+                </svg>
+                <label class="sr-only" for="searchInput">Cari produk</label>
+                <input id="searchInput" type="search" placeholder="Cari produk Apple..." autocomplete="off">
+            </div>
+            <p class="search-hint">Tekan Enter untuk melihat semua hasil, Esc untuk menutup.</p>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <section class="about-hero">
+            <div class="container about-hero-grid">
+                <div class="about-hero-copy">
+                    <p class="eyebrow eyebrow--light">
+                        <span class="eyebrow-dot" aria-hidden="true"></span>
+                        Status / Proyek sekolah
+                    </p>
+                    <h1>Situs ini<br><span>tugas sekolah.</span></h1>
+                    <p class="about-hero-lead">
+                        ORBITE bukan toko resmi. Ini toko konsep yang dibuat untuk tugas
+                        sekolah—tempat latihan merancang antarmuka, menyusun katalog,
+                        dan membangun alur belanja dari nol.
+                    </p>
+                    <div class="about-hero-actions">
+                        <a class="btn btn--amber" href="products.html">
+                            Lihat katalog <span aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a class="btn btn--ghost" href="index.html">Kembali ke beranda</a>
+                    </div>
+                </div>
+
+                <aside class="about-card" aria-label="Ringkasan proyek">
+                    <div class="about-card-top">
+                        <span class="about-card-kicker">ORBITE / 2026</span>
+                        <span class="about-card-status">Simulasi</span>
+                    </div>
+                    <p class="about-card-number">01</p>
+                    <dl class="about-card-meta">
+                        <div>
+                            <dt>Jenis</dt>
+                            <dd>Proyek tugas sekolah</dd>
+                        </div>
+                        <div>
+                            <dt>Fokus</dt>
+                            <dd>Desain &amp; front-end</dd>
+                        </div>
+                        <div>
+                            <dt>Transaksi</dt>
+                            <dd>Tidak nyata</dd>
+                        </div>
+                    </dl>
+                    <span class="about-card-orbit" aria-hidden="true"></span>
+                    <span class="about-card-sat" aria-hidden="true"></span>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section about-story">
+            <div class="container about-story-grid">
+                <div>
+                    <p class="eyebrow">Kenapa ORBITE ada</p>
+                    <h2>Satu tempat untuk belajar membuat toko yang terasa nyata.</h2>
+                </div>
+                <div class="about-story-copy">
+                    <p>
+                        Tugasnya sederhana: membuat situs toko. Kami memilih produk Apple
+                        karena bahasa visualnya sudah kuat—tinggal bagaimana mengemasnya
+                        ulang tanpa kehilangan karakter.
+                    </p>
+                    <p>
+                        Nama ORBITE diambil dari kata <em>orbit</em>: benda-benda yang
+                        bergerak di jalurnya sendiri, tetapi tetap terhubung satu sama lain.
+                        Itulah cara kami melihat katalog ini.
+                    </p>
+                    <blockquote>
+                        “Dibuat untuk nilai sekolah. Dikerjakan seperti portofolio.”
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-try" aria-labelledby="try-title">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Yang bisa dicoba</p>
+                        <h2 id="try-title">Empat jalur di orbit ini.</h2>
+                    </div>
+                    <p class="section-head-note">
+                        Semua fitur berjalan di browser. Tidak ada data yang dikirim ke server.
+                    </p>
+                </div>
+
+                <div class="try-grid">
+                    <article class="try-card">
+                        <span class="try-number">01</span>
+                        <h3>Katalog</h3>
+                        <p>Cari, filter kategori, dan urutkan 18 produk. URL ikut berubah sesuai filter.</p>
+                    </article>
+                    <article class="try-card">
+                        <span class="try-number">02</span>
+                        <h3>Detail produk</h3>
+                        <p>Pilih warna, kapasitas, dan jumlah. Harga ikut menyesuaikan pilihanmu.</p>
+                    </article>
+                    <article class="try-card">
+                        <span class="try-number">03</span>
+                        <h3>Keranjang</h3>
+                        <p>Ubah jumlah, hapus item, dan lihat ringkasan belanja secara langsung.</p>
+                    </article>
+                    <article class="try-card">
+                        <span class="try-number">04</span>
+                        <h3>Checkout</h3>
+                        <p>Isi formulir simulasi, pilih pengiriman dan pembayaran, lalu dapatkan nomor pesanan.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-process" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Proses</p>
+                        <h2 id="process-title">Dari ide ke orbit.</h2>
+                    </div>
+                    <p class="section-head-note">Lima langkah, dikerjakan bertahap dan diuji di desktop maupun ponsel.</p>
+                </div>
+
+                <ol class="process-list">
+                    <li>
+                        <span class="process-number">01</span>
+                        <div>
+                            <h3>Riset &amp; struktur</h3>
+                            <p>Menentukan halaman, alur belanja, dan hierarki informasi.</p>
+                        </div>
+                        <span class="process-tag">Brief</span>
+                    </li>
+                    <li>
+                        <span class="process-number">02</span>
+                        <div>
+                            <h3>Data produk</h3>
+                            <p>Menyusun 18 produk, kategori, varian, harga, dan gambar lokal.</p>
+                        </div>
+                        <span class="process-tag">Konten</span>
+                    </li>
+                    <li>
+                        <span class="process-number">03</span>
+                        <div>
+                            <h3>Desain sistem</h3>
+                            <p>Tipografi, warna, kartu, tombol, dan komponen yang konsisten.</p>
+                        </div>
+                        <span class="process-tag">Visual</span>
+                    </li>
+                    <li>
+                        <span class="process-number">04</span>
+                        <div>
+                            <h3>Interaksi</h3>
+                            <p>Slider, filter, keranjang, validasi formulir, dan animasi halus.</p>
+                        </div>
+                        <span class="process-tag">Front-end</span>
+                    </li>
+                    <li>
+                        <span class="process-number">05</span>
+                        <div>
+                            <h3>Uji &amp; rapikan</h3>
+                            <p>Mengecek keyboard, layar kecil, overflow, dan alur checkout.</p>
+                        </div>
+                        <span class="process-tag">QA</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section about-tech">
+            <div class="container about-tech-grid">
+                <div>
+                    <p class="eyebrow">Di balik layar</p>
+                    <h2>Tanpa framework. Tanpa backend. Tetap berfungsi.</h2>
+                </div>
+                <div>
+                    <ul class="tech-chips" aria-label="Teknologi yang digunakan">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>localStorage</li>
+                        <li>Gambar lokal</li>
+                        <li>Responsif</li>
+                    </ul>
+                    <p class="about-tech-note">
+                        Keranjang disimpan di perangkatmu. Checkout hanya simulasi dan
+                        tidak memproses pembayaran.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-sources" id="sumber" aria-labelledby="sources-title">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Sumber &amp; kredit</p>
+                        <h2 id="sources-title">Aset ini datang dari mana.</h2>
+                    </div>
+                    <p class="section-head-note">
+                        Sebagian foto dan font di situs ini milik pihak lain. Semuanya dipakai
+                        untuk keperluan tugas sekolah, tanpa klaim kepemilikan.
+                    </p>
+                </div>
+
+                <ol class="process-list source-list">
+                    <li>
+                        <span class="process-number">01</span>
+                        <div>
+                            <h3>Render iPad Pro 13 inci</h3>
+                            <p>
+                                Render transparan iPad Pro 13 inci (M4, Space Black) dari katalog
+                                Apple Store. Di-trim, diperkecil, lalu dikomposisi ulang untuk hero,
+                                kartu produk, dan kartu promo.
+                            </p>
+                            <p class="source-files">ipad-pro-hero.png · ipad-pro.png · ipad-pro-duo.png</p>
+                            <a class="source-link" href="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=1600&amp;hei=1600&amp;fmt=png-alpha" target="_blank" rel="noopener">Apple Store image CDN</a>
+                        </div>
+                        <span class="process-tag">Apple</span>
+                    </li>
+                    <li>
+                        <span class="process-number">02</span>
+                        <div>
+                            <h3>Referensi nama &amp; spesifikasi</h3>
+                            <p>
+                                Nama model, spesifikasi, dan harga pembanding mengacu pada halaman
+                                produk resmi Apple. Harga di ORBITE adalah simulasi, bukan harga resmi.
+                            </p>
+                            <p class="source-files">js/products.js</p>
+                            <a class="source-link" href="https://www.apple.com/id/" target="_blank" rel="noopener">apple.com/id</a>
+                        </div>
+                        <span class="process-tag">Apple</span>
+                    </li>
+                    <li>
+                        <span class="process-number">03</span>
+                        <div>
+                            <h3>Foto Apple Pencil Pro</h3>
+                            <p>
+                                Foto produk Apple Pencil Pro dari PB Tech. Latar dihapus dan
+                                dirapikan agar menyatu dengan latar situs.
+                            </p>
+                            <p class="source-files">apple-pencil.png</p>
+                            <a class="source-link" href="https://web.archive.org/web/20260608202411id_/https://www.pbtech.co.nz/imgprod/T/A/TAAAPP6225558__1.jpg" target="_blank" rel="noopener">Arsip gambar PB Tech via Wayback Machine</a>
+                        </div>
+                        <span class="process-tag">PB Tech</span>
+                    </li>
+                    <li>
+                        <span class="process-number">04</span>
+                        <div>
+                            <h3>Foto Magic Keyboard</h3>
+                            <p>
+                                Foto produk Magic Keyboard dari PB Tech (kode produk
+                                KEYAPP6360245). Latar dihapus dan gambar dirapikan.
+                            </p>
+                            <p class="source-files">magic-keyboard.png</p>
+                            <a class="source-link" href="https://www.pbtech.co.nz/" target="_blank" rel="noopener">pbtech.co.nz</a>
+                        </div>
+                        <span class="process-tag">PB Tech</span>
+                    </li>
+                    <li>
+                        <span class="process-number">05</span>
+                        <div>
+                            <h3>Gambar promo iPhone</h3>
+                            <p>
+                                Gambar promo iPhone dari PB Tech. Dipotong, latar dihapus, dan
+                                disusun ulang untuk kartu duo di beranda.
+                            </p>
+                            <p class="source-files">iphone-duo.png</p>
+                            <a class="source-link" href="https://www.pbtech.co.nz/api/files/image?path=imglib/blockimage/20261013162710_Promo%20header.png" target="_blank" rel="noopener">Gambar promo PB Tech</a>
+                        </div>
+                        <span class="process-tag">PB Tech</span>
+                    </li>
+                    <li>
+                        <span class="process-number">06</span>
+                        <div>
+                            <h3>Foto produk lainnya</h3>
+                            <p>
+                                Foto produk lain diambil dari website apple.
+                            </p>
+                            <p class="source-files">
+                                airpods-4.jpg · airpods-max.jpg · airpods-pro.jpg · imac.jpg ·
+                                ipad-air.jpg · iphone-15.jpg · iphone-16.jpg · iphone-16-pro.jpg ·
+                                iphone-16-pro.png · iphone-18-pro.png · macbook-air.jpg ·
+                                macbook-pro.jpg · mac-mini.jpg · watch-se.jpg · watch-series.jpg ·
+                                watch-ultra.jpg
+                            </p>
+                            <a class="source-link" href="https://www.apple.com/id/" target="_blank" rel="noopener">apple.com/id</a>
+
+                        </div>
+                        <span class="process-tag">Apple</span>
+                    </li>
+                    <li>
+                        <span class="process-number">07</span>
+                        <div>
+                            <h3>Bricolage Grotesque &amp; Instrument Sans</h3>
+                            <p>
+                                Dua font dimuat dari Google Fonts dan dipakai sesuai lisensi
+                                SIL Open Font License.
+                            </p>
+                            <p class="source-files">css/style.css</p>
+                            <a class="source-link" href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a>
+                        </div>
+                        <span class="process-tag">Font</span>
+                    </li>
+                    <li>
+                        <span class="process-number">08</span>
+                        <div>
+                            <h3>Ikon, logo, dan ilustrasi</h3>
+                            <p>
+                                Logo ORBITE, ikon antarmuka, favicon, dan ornamen orbit dibuat
+                                sendiri sebagai SVG di dalam berkas situs. Tidak ada ikon dari
+                                pustaka eksternal.
+                            </p>
+                            <p class="source-files">SVG inline · assets/favicon.svg</p>
+                        </div>
+                        <span class="process-tag">Internal</span>
+                    </li>
+                </ol>
+
+                <p class="source-note">
+                    Jika kamu pemilik salah satu aset dan ingin kredit diperbaiki atau materi
+                    dihapus, hubungi <a href="mailto:halo@orbite.example">halo@orbite.example</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="disclaimer-card">
+                    <p class="eyebrow">Catatan penting</p>
+                    <h2>Bukan toko sungguhan.</h2>
+                    <p>
+                        ORBITE adalah proyek tugas sekolah. Tidak ada transaksi, pengiriman,
+                        atau pembayaran nyata. Situs ini tidak berafiliasi dengan Apple Inc.
+                        Apple, iPhone, iPad, Mac, dan Watch adalah merek dagang Apple Inc.
+                    </p>
+                    <a class="btn btn--dark" href="products.html">Tetap jelajahi katalog</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-wordmark" aria-hidden="true">ORBITE</div>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                        <span class="brand-word">ORBITE</span>
+                    </a>
+                    <p>Toko konsep untuk produk Apple pilihan. Dibuat sebagai proyek tugas sekolah, dikerjakan dengan
+                        serius.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Belanja</h3>
+                    <a href="products.html?category=iphone">iPhone</a>
+                    <a href="products.html?category=mac">Mac</a>
+                    <a href="products.html?category=ipad">iPad</a>
+                    <a href="products.html?category=watch">Watch</a>
+                    <a href="products.html?category=audio">Audio</a>
+                    <a href="products.html?category=aksesori">Aksesori</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Bantuan</h3>
+                    <a href="index.html#layanan">Pengiriman</a>
+                    <a href="index.html#layanan">Garansi</a>
+                    <a href="index.html#layanan">Cicilan</a>
+                    <a href="mailto:halo@orbite.example">Hubungi kami</a>
+                    <a href="tentang.html">Tentang ORBITE</a>
+                    <a href="tentang.html#sumber">Sumber aset</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Ikuti</h3>
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span data-year>2026</span> ORBITE. Proyek tugas sekolah. Tidak berafiliasi dengan Apple Inc.
+                    Apple, iPhone, iPad, Mac, dan Watch adalah merek dagang Apple Inc.</p>
+                <p>Dibuat dengan HTML, CSS, dan JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

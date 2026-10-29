@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detail Produk — ORBITE</title>
+    <meta name="description"
+        content="Lihat detail, pilihan warna, penyimpanan, dan harga produk Apple pilihan di ORBITE.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/products.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <nav class="site-nav" aria-label="Navigasi utama">
+        <div class="container nav-inner">
+
+            <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                <span class="brand-word">ORBITE</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" data-nav="home">Beranda</a>
+                <a href="products.html" data-nav="products">Produk</a>
+                <a href="tentang.html" data-nav="tentang">Tentang</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search-open aria-label="Cari produk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6.5" />
+                        <path d="M16 16 21 21" />
+                    </svg>
+                </button>
+
+                <a class="icon-btn" href="cart.html" aria-label="Keranjang belanja">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        aria-hidden="true">
+                        <path d="M6 8h12l1 13H5L6 8z" />
+                        <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round" />
+                    </svg>
+                    <span class="cart-count" data-cart-count>0</span>
+                </a>
+
+                <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" data-nav="home">Beranda <span>ORBITE</span></a>
+        <a href="products.html" data-nav="products">Semua produk <span>18 produk</span></a>
+        <a href="tentang.html" data-nav="tentang">Tentang <span>Proyek sekolah</span></a>
+        <p class="mobile-note">Pilih kategori lewat filter di halaman Produk. Gratis pengiriman untuk pesanan di atas Rp 1.000.000.</p>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Cari produk">
+        <button class="search-close" type="button" aria-label="Tutup pencarian">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+        </button>
+        <div class="search-panel">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="M16 16 21 21" />
+                </svg>
+                <label class="sr-only" for="searchInput">Cari produk</label>
+                <input id="searchInput" type="search" placeholder="Cari produk Apple..." autocomplete="off">
+            </div>
+            <p class="search-hint">Tekan Enter untuk melihat semua hasil, Esc untuk menutup.</p>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main id="main" class="container pdp-page">
+
+        <div id="pdpRoot">
+
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Beranda</a>
+                <span class="sep">/</span>
+                <a href="products.html" id="breadcrumbCategory">Produk</a>
+                <span class="sep">/</span>
+                <span id="breadcrumbCurrent">Detail</span>
+            </nav>
+
+            <div class="pdp-grid">
+
+                <div class="pdp-media">
+                    <span class="product-badge" id="pdpBadge" hidden></span>
+                    <img id="pdpImage" alt="">
+                </div>
+
+                <div class="pdp-info">
+                    <p class="pdp-cat" id="pdpCategory"></p>
+                    <h1 id="pdpTitle"></h1>
+                    <p class="pdp-tagline" id="pdpTagline"></p>
+
+                    <div class="pdp-price-row">
+                        <p class="pdp-price" id="pdpPrice"></p>
+                        <span class="pdp-tax" id="pdpTax">Termasuk PPN.</span>
+                    </div>
+
+                    <div class="pdp-divider"></div>
+
+                    <div class="option-group" id="colorGroup">
+                        <div class="option-title">
+                            <span>Warna</span>
+                            <span class="option-value" id="colorValue"></span>
+                        </div>
+                        <div class="swatches" id="colorOptions"></div>
+                    </div>
+
+                    <div class="option-group" id="storageGroup">
+                        <div class="option-title">
+                            <span>Penyimpanan</span>
+                            <span class="option-value" id="storageValue"></span>
+                        </div>
+                        <div class="storage-chips" id="storageOptions"></div>
+                    </div>
+
+                    <div class="option-group">
+                        <div class="option-title">
+                            <span>Jumlah</span>
+                        </div>
+                        <div class="qty">
+                            <button type="button" id="qtyMinus" aria-label="Kurangi jumlah">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" aria-hidden="true">
+                                    <path d="M5 12h14" />
+                                </svg>
+                            </button>
+                            <output id="qtyValue">1</output>
+                            <button type="button" id="qtyPlus" aria-label="Tambah jumlah">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" aria-hidden="true">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pdp-actions">
+                        <button class="btn btn--primary btn--lg" type="button" id="addToCart">Tambah ke
+                            keranjang</button>
+                        <button class="btn btn--outline btn--lg" type="button" id="buyNow">Beli sekarang</button>
+                    </div>
+
+                    <ul class="pdp-notes">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 17h4V5H2v12h3" />
+                                <path d="M20 17h2v-3.3a4 4 0 0 0-1.2-2.8L19 9h-5v8h1" />
+                                <circle cx="7.5" cy="17.5" r="2.5" />
+                                <circle cx="17.5" cy="17.5" r="2.5" />
+                            </svg>
+                            Gratis pengiriman ke seluruh Indonesia
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg>
+                            Garansi resmi Apple Indonesia 1 tahun
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+                                <path d="M3 3v5h5" />
+                            </svg>
+                            Bisa dikembalikan dalam 14 hari
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <section class="pdp-section">
+                <h2>Tentang produk</h2>
+                <p class="pdp-desc" id="pdpDescription"></p>
+            </section>
+
+            <section class="pdp-section">
+                <h2>Yang membuatnya istimewa</h2>
+                <ul class="highlight-list" id="highlightList"></ul>
+            </section>
+
+            <section class="pdp-section">
+                <h2>Spesifikasi</h2>
+                <dl class="spec-table" id="specList"></dl>
+            </section>
+
+            <section class="related">
+                <div class="section-head">
+                    <h2>Kamu mungkin juga suka</h2>
+                    <a class="link-more" href="products.html">Lihat semua produk</a>
+                </div>
+                <div class="product-grid" id="relatedGrid"></div>
+            </section>
+
+        </div>
+
+        <div class="not-found" id="pdpNotFound" hidden>
+            <h1>Produk tidak ditemukan</h1>
+            <p>Produk yang kamu cari mungkin sudah tidak tersedia atau tautannya berubah.</p>
+            <a class="btn btn--dark" href="products.html">Lihat semua produk</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-wordmark" aria-hidden="true">ORBITE</div>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                        <span class="brand-word">ORBITE</span>
+                    </a>
+                    <p>Toko konsep untuk produk Apple pilihan. Dibuat sebagai proyek tugas sekolah, dikerjakan dengan serius.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Belanja</h3>
+                    <a href="products.html?category=iphone">iPhone</a>
+                    <a href="products.html?category=mac">Mac</a>
+                    <a href="products.html?category=ipad">iPad</a>
+                    <a href="products.html?category=watch">Watch</a>
+                    <a href="products.html?category=audio">Audio</a>
+                    <a href="products.html?category=aksesori">Aksesori</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Bantuan</h3>
+                    <a href="index.html#layanan">Pengiriman</a>
+                    <a href="index.html#layanan">Garansi</a>
+                    <a href="index.html#layanan">Cicilan</a>
+                    <a href="mailto:halo@orbite.example">Hubungi kami</a>
+                    <a href="tentang.html">Tentang ORBITE</a>
+                    <a href="tentang.html#sumber">Sumber aset</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Ikuti</h3>
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span data-year>2026</span> ORBITE. Proyek tugas sekolah. Tidak berafiliasi dengan Apple Inc. Apple, iPhone, iPad, Mac, dan Watch adalah merek dagang Apple Inc.</p>
+                <p>Dibuat dengan HTML, CSS, dan JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

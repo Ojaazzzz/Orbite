@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ORBITE — Toko Konsep Apple</title>
+    <meta name="description"
+        content="ORBITE adalah proyek tugas sekolah berupa toko konsep untuk produk Apple pilihan: iPhone, Mac, iPad, Watch, dan audio. Dibuat dengan HTML, CSS, dan JavaScript.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/products.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+    <nav class="site-nav" aria-label="Navigasi utama">
+        <div class="container nav-inner">
+
+            <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                <span class="brand-word">ORBITE</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" data-nav="home">Beranda</a>
+                <a href="products.html" data-nav="products">Produk</a>
+                <a href="tentang.html" data-nav="tentang">Tentang</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-btn" type="button" data-search-open aria-label="Cari produk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6.5" />
+                        <path d="M16 16 21 21" />
+                    </svg>
+                </button>
+
+                <a class="icon-btn" href="cart.html" aria-label="Keranjang belanja">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        aria-hidden="true">
+                        <path d="M6 8h12l1 13H5L6 8z" />
+                        <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round" />
+                    </svg>
+                    <span class="cart-count" data-cart-count>0</span>
+                </a>
+
+                <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" data-nav="home">Beranda <span>ORBITE</span></a>
+        <a href="products.html" data-nav="products">Semua produk <span>18 produk</span></a>
+        <a href="tentang.html" data-nav="tentang">Tentang <span>Proyek sekolah</span></a>
+        <p class="mobile-note">Pilih kategori lewat filter di halaman Produk. Gratis pengiriman untuk pesanan di atas Rp 1.000.000.</p>
+    </div>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Cari produk">
+        <button class="search-close" type="button" aria-label="Tutup pencarian">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+        </button>
+        <div class="search-panel">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="M16 16 21 21" />
+                </svg>
+                <label class="sr-only" for="searchInput">Cari produk</label>
+                <input id="searchInput" type="search" placeholder="Cari produk Apple..." autocomplete="off">
+            </div>
+            <p class="search-hint">Tekan Enter untuk melihat semua hasil, Esc untuk menutup.</p>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <!-- =====================================================
+             HERO SLIDER
+             ===================================================== -->
+        <section class="orbit-hero" data-hero aria-roledescription="carousel" aria-label="Sorotan produk ORBITE">
+            <div class="hero-grid-lines" aria-hidden="true"></div>
+
+            <div class="container orbit-hero-inner">
+                <div class="orbit-hero-copy">
+                    <p class="eyebrow eyebrow--light">
+                        <span class="eyebrow-dot" aria-hidden="true"></span>
+                        Kurasi orbit
+                        <span>2026</span>
+                    </p>
+
+                    <h1 class="sr-only">ORBITE — toko konsep produk Apple pilihan</h1>
+
+                    <div class="hero-slides">
+                        <article class="hero-slide is-active" data-hero-slide aria-label="Sorotan 1 dari 3">
+                            <p class="hero-index">01 / iPhone</p>
+                            <h2>iPhone 18 Pro</h2>
+                            <p class="hero-tagline">
+                                Chip A20 Pro. Kamera Fusion 48 MP dengan aperture variabel.
+                                Bodi aluminium unibody dalam iPhone paling Pro yang pernah ada.
+                            </p>
+                            <p class="hero-price">Mulai dari <strong>Rp 22.999.000</strong></p>
+                            <div class="hero-actions">
+                                <a class="btn btn--amber" href="product.html?id=iphone-18-pro">
+                                    Beli sekarang <span aria-hidden="true">&rarr;</span>
+                                </a>
+                                <a class="btn btn--ghost" href="products.html?category=iphone">Jelajahi iPhone</a>
+                            </div>
+                        </article>
+
+                        <article class="hero-slide" data-hero-slide aria-label="Sorotan 2 dari 3" aria-hidden="true">
+                            <p class="hero-index">02 / iPhone</p>
+                            <h2>iPhone Duo</h2>
+                            <p class="hero-tagline">
+                                iPhone lipat pertama Apple. Layar dalam 7,6 inci, bodi titanium,
+                                dan A20 Pro untuk dua sisi pengalaman yang sama sekali baru.
+                            </p>
+                            <p class="hero-price">Mulai dari <strong>Rp 37.999.000</strong></p>
+                            <div class="hero-actions">
+                                <a class="btn btn--amber" href="product.html?id=iphone-duo">
+                                    Beli sekarang <span aria-hidden="true">&rarr;</span>
+                                </a>
+                                <a class="btn btn--ghost" href="products.html?category=iphone">Jelajahi iPhone</a>
+                            </div>
+                        </article>
+
+                        <article class="hero-slide" data-hero-slide aria-label="Sorotan 3 dari 3" aria-hidden="true">
+                            <p class="hero-index">03 / iPad</p>
+                            <h2>iPad Pro 13</h2>
+                            <p class="hero-tagline">
+                                Sangat tipis. Sangat bertenaga. Chip M4, layar Ultra Retina XDR,
+                                dan Apple Pencil Pro untuk ide yang bergerak cepat.
+                            </p>
+                            <p class="hero-price">Mulai dari <strong>Rp 19.999.000</strong></p>
+                            <div class="hero-actions">
+                                <a class="btn btn--amber" href="product.html?id=ipad-pro">
+                                    Beli sekarang <span aria-hidden="true">&rarr;</span>
+                                </a>
+                                <a class="btn btn--ghost" href="products.html?category=ipad">Jelajahi iPad</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="hero-footer">
+                        <div class="hero-dots" aria-label="Pilih sorotan">
+                            <button class="hero-dot is-active" type="button" data-hero-dot="0"
+                                aria-label="Sorotan 1: iPhone 18 Pro" aria-pressed="true">
+                                <span class="hero-dot-num">01</span>
+                                <span class="hero-dot-line" aria-hidden="true"></span>
+                            </button>
+                            <button class="hero-dot" type="button" data-hero-dot="1"
+                                aria-label="Sorotan 2: iPhone Duo" aria-pressed="false">
+                                <span class="hero-dot-num">02</span>
+                                <span class="hero-dot-line" aria-hidden="true"></span>
+                            </button>
+                            <button class="hero-dot" type="button" data-hero-dot="2"
+                                aria-label="Sorotan 3: iPad Pro 13" aria-pressed="false">
+                                <span class="hero-dot-num">03</span>
+                                <span class="hero-dot-line" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <div class="hero-arrows">
+                            <button class="hero-arrow" type="button" data-hero-prev aria-label="Sorotan sebelumnya">
+                                &larr;
+                            </button>
+                            <button class="hero-arrow" type="button" data-hero-next aria-label="Sorotan berikutnya">
+                                &rarr;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="orbit-hero-stage">
+                    <span class="hero-float">Baru mendarat</span>
+
+                    <div class="hero-arch">
+                        <div class="hero-media-slide is-active" data-hero-media>
+                            <img src="assets/img/iphone-18-pro.png" alt="iPhone 18 Pro dalam warna Burgundy dan Black"
+                                width="1000" height="1000" fetchpriority="high">
+                        </div>
+                        <div class="hero-media-slide" data-hero-media aria-hidden="true">
+                            <img src="assets/img/iphone-duo.png" alt="iPhone Duo dalam warna Night Sky dan Star White"
+                                width="1000" height="1000">
+                        </div>
+                        <div class="hero-media-slide hero-media-slide--contain" data-hero-media aria-hidden="true">
+                            <img src="assets/img/ipad-pro-hero.png" alt="iPad Pro 13 inci warna Space Black"
+                                width="1000" height="1250">
+                        </div>
+                    </div>
+
+                    <div class="hero-stage-note">
+                        <span class="hero-stage-note-label">Di orbit</span>
+                        <strong data-hero-counter>01</strong>
+                        <span>dari 03</span>
+                    </div>
+
+                    <span class="hero-ring hero-ring--one" aria-hidden="true"></span>
+                    <span class="hero-ring hero-ring--two" aria-hidden="true"></span>
+                    <span class="hero-sat" aria-hidden="true"></span>
+                </div>
+            </div>
+
+            <div class="hero-scroll" aria-hidden="true"><span></span> Gulir untuk menjelajah</div>
+        </section>
+
+        <!-- =====================================================
+             TICKER
+             ===================================================== -->
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track">
+                <div class="ticker-group">
+                    <span>Gratis pengiriman di atas Rp 1 juta</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Garansi resmi 1 tahun</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Cicilan 0% hingga 12 bulan</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Tukar tambah perangkat lama</span>
+                    <span class="ticker-sep">/</span>
+                </div>
+                <div class="ticker-group">
+                    <span>Gratis pengiriman di atas Rp 1 juta</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Garansi resmi 1 tahun</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Cicilan 0% hingga 12 bulan</span>
+                    <span class="ticker-sep">/</span>
+                    <span>Tukar tambah perangkat lama</span>
+                    <span class="ticker-sep">/</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================
+             INTRO
+             ===================================================== -->
+        <section class="intro-section section">
+            <div class="container intro-grid">
+                <div class="intro-copy">
+                    <p class="eyebrow">Bukan katalog biasa</p>
+                    <h2>Barang terbaik,<br>di orbit yang tepat.</h2>
+                </div>
+
+                <div class="intro-side">
+                    <p>
+                        ORBITE mengurasi iPhone, Mac, iPad, Watch, dan audio pilihan.
+                        Bukan semua barang—hanya yang paling masuk akal untuk dibawa
+                        dalam keseharianmu.
+                    </p>
+                    <a class="link-arrow" href="products.html">
+                        Masuk ke katalog <span aria-hidden="true">&rarr;</span>
+                    </a>
+
+                    <dl class="intro-stats">
+                        <div>
+                            <dt>18</dt>
+                            <dd>produk terkurasi</dd>
+                        </div>
+                        <div>
+                            <dt>06</dt>
+                            <dd>kategori</dd>
+                        </div>
+                        <div>
+                            <dt>03</dt>
+                            <dd>langkah checkout</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             PRODUCT RAIL
+             ===================================================== -->
+        <section class="section rail-section" aria-labelledby="rail-title">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Pilihan editor</p>
+                        <h2 id="rail-title">Sedang di orbit</h2>
+                        <p>Enam produk yang paling sering masuk daftar incaran.</p>
+                    </div>
+
+                    <div class="rail-head-actions">
+                        <a class="link-more" href="products.html">Lihat semua produk</a>
+                        <div class="rail-controls" data-rail-controls="featuredGrid">
+                            <button class="rail-btn" type="button" data-rail-prev aria-label="Geser produk ke kiri">
+                                &larr;
+                            </button>
+                            <button class="rail-btn" type="button" data-rail-next aria-label="Geser produk ke kanan">
+                                &rarr;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-rail" id="featuredGrid" data-rail></div>
+
+                <noscript>
+                    <p>Aktifkan JavaScript untuk melihat produk unggulan.</p>
+                </noscript>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             DUO EDITORIAL
+             ===================================================== -->
+        <section class="section duo-section" aria-label="Sorotan pilihan">
+            <div class="container">
+                <div class="duo-grid">
+
+                    <a class="duo-card duo-card--dark" href="product.html?id=macbook-pro-14">
+                        <div class="duo-copy">
+                            <p class="eyebrow eyebrow--light">01 / Komputasi</p>
+                            <h2>MacBook Pro 14</h2>
+                            <p>Chip M4 Pro. Layar Liquid Retina XDR. Baterai hingga 22 jam.</p>
+                            <span class="duo-link">Jelajahi MacBook Pro <span aria-hidden="true">&rarr;</span></span>
+                        </div>
+                        <img src="assets/img/macbook-pro.jpg" alt="MacBook Pro 14 inci dengan pencahayaan ungu"
+                            loading="lazy">
+                        <span class="duo-orbit" aria-hidden="true"></span>
+                    </a>
+
+                    <div class="duo-stack">
+                        <a class="duo-card duo-card--amber" href="product.html?id=ipad-pro">
+                            <div class="duo-copy">
+                                <p class="eyebrow">02 / Kreatif</p>
+                                <h3>iPad Pro 13</h3>
+                                <p>Sangat tipis. Sangat bertenaga. Dengan chip M4.</p>
+                                <span class="duo-link">Jelajahi iPad Pro <span aria-hidden="true">&rarr;</span></span>
+                            </div>
+                            <img src="assets/img/ipad-pro-duo.png" alt="iPad Pro 13 inci warna Space Black"
+                                width="1600" height="1125" loading="lazy">
+                        </a>
+
+                        <a class="duo-card duo-card--light" href="product.html?id=airpods-max">
+                            <div class="duo-copy">
+                                <p class="eyebrow">03 / Audio</p>
+                                <h3>AirPods Max</h3>
+                                <p>Musik dalam warna. Audio Spatial dan ANC dalam bodi aluminium.</p>
+                                <span class="duo-link">Jelajahi AirPods Max <span aria-hidden="true">&rarr;</span></span>
+                            </div>
+                            <img src="assets/img/airpods-max.jpg" alt="AirPods Max warna pink di atas latar gradasi"
+                                loading="lazy">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             ORBIT CATEGORIES
+             ===================================================== -->
+        <section class="orbit-categories section" aria-labelledby="orbit-cat-title">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">06 rute</p>
+                        <h2 id="orbit-cat-title">Pilih orbitmu</h2>
+                    </div>
+                    <p class="section-head-note">
+                        Enam kategori, satu tempat. Mulai dari yang paling sering kamu bawa.
+                    </p>
+                </div>
+
+                <div class="orbit-belt-wrap">
+                    <div class="orbit-belt" id="categoryList"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             MISSION SPOTLIGHT
+             ===================================================== -->
+        <section class="section mission-section" aria-labelledby="mission-title">
+            <div class="container">
+                <div class="mission-card">
+                    <div class="mission-media">
+                        <img src="assets/img/watch-series.jpg" alt="Apple Watch Series 10 dalam berbagai warna dan strap"
+                            loading="lazy">
+                    </div>
+
+                    <div class="mission-copy">
+                        <p class="eyebrow eyebrow--light">Sorotan / Watch</p>
+                        <h2 id="mission-title">Kesehatan,<br>di pergelangan.</h2>
+                        <p>
+                            Apple Watch Series 10 membawa layar lebih besar, pemantauan
+                            tidur, dan latihan yang mengikuti ritmemu—bukan sebaliknya.
+                        </p>
+                        <p class="mission-price">Mulai dari <strong>Rp 5.999.000</strong></p>
+                        <a class="btn btn--amber" href="product.html?id=apple-watch-10">
+                            Lihat Series 10 <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <span class="mission-orbit" aria-hidden="true"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             ABOUT TEASER
+             ===================================================== -->
+        <section class="section about-teaser">
+            <div class="container about-teaser-inner">
+                <p class="about-ghost" aria-hidden="true">TUGAS<br>SEKOLAH</p>
+
+                <div class="about-teaser-copy">
+                    <p class="eyebrow">Di balik ORBITE</p>
+                    <h2>Ini proyek sekolah. Dikerjakan seperti toko sungguhan.</h2>
+                    <p>
+                        ORBITE dibuat untuk tugas sekolah, bukan toko resmi. Semua produk,
+                        harga, dan transaksi di sini adalah simulasi untuk melatih desain
+                        dan pengembangan web.
+                    </p>
+                    <a class="btn btn--dark" href="tentang.html">
+                        Baca ceritanya <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             LAYANAN
+             ===================================================== -->
+        <section class="values" id="layanan" aria-label="Layanan ORBITE">
+            <div class="container values-grid">
+
+                <div class="value">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M10 17h4V5H2v12h3" />
+                        <path d="M20 17h2v-3.3a4 4 0 0 0-1.2-2.8L19 9h-5v8h1" />
+                        <circle cx="7.5" cy="17.5" r="2.5" />
+                        <circle cx="17.5" cy="17.5" r="2.5" />
+                    </svg>
+                    <div>
+                        <h3>Gratis pengiriman</h3>
+                        <p>Untuk pesanan di atas Rp 1.000.000 ke seluruh Indonesia.</p>
+                    </div>
+                </div>
+
+                <div class="value">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                    </svg>
+                    <div>
+                        <h3>Garansi resmi</h3>
+                        <p>Semua perangkat bergaransi resmi Apple Indonesia.</p>
+                    </div>
+                </div>
+
+                <div class="value">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <path d="M2 10h20" />
+                    </svg>
+                    <div>
+                        <h3>Cicilan 0%</h3>
+                        <p>Tersedia hingga 12 bulan dengan kartu kredit bank partner.</p>
+                    </div>
+                </div>
+
+                <div class="value">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                    <div>
+                        <h3>Tukar tambah</h3>
+                        <p>Hitung nilai perangkat lamamu dan hemat untuk yang baru.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer class="site-footer">
+        <div class="footer-wordmark" aria-hidden="true">ORBITE</div>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a class="brand" href="index.html" aria-label="ORBITE, kembali ke beranda">
+                        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="7.6" stroke="currentColor" stroke-width="2.4" /><ellipse cx="16" cy="16" rx="13.4" ry="5.6" transform="rotate(-30 16 16)" stroke="currentColor" stroke-width="1.4" opacity="0.65" /><circle class="brand-sat" cx="26.8" cy="9.4" r="2.2" fill="#ffb800" /></svg>
+                        <span class="brand-word">ORBITE</span>
+                    </a>
+                    <p>Toko konsep untuk produk Apple pilihan. Dibuat sebagai proyek tugas sekolah, dikerjakan dengan
+                        serius.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Belanja</h3>
+                    <a href="products.html?category=iphone">iPhone</a>
+                    <a href="products.html?category=mac">Mac</a>
+                    <a href="products.html?category=ipad">iPad</a>
+                    <a href="products.html?category=watch">Watch</a>
+                    <a href="products.html?category=audio">Audio</a>
+                    <a href="products.html?category=aksesori">Aksesori</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Bantuan</h3>
+                    <a href="index.html#layanan">Pengiriman</a>
+                    <a href="index.html#layanan">Garansi</a>
+                    <a href="index.html#layanan">Cicilan</a>
+                    <a href="mailto:halo@orbite.example">Hubungi kami</a>
+                    <a href="tentang.html">Tentang ORBITE</a>
+                    <a href="tentang.html#sumber">Sumber aset</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Ikuti</h3>
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span data-year>2026</span> ORBITE. Proyek tugas sekolah. Tidak berafiliasi dengan Apple Inc.
+                    Apple, iPhone, iPad, Mac, dan Watch adalah merek dagang Apple Inc.</p>
+                <p>Dibuat dengan HTML, CSS, dan JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
